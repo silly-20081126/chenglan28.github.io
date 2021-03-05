@@ -1,0 +1,34 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: black;
+    color: white;
+}
+.block {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
+#red,#red_ {
+    top: 400px;
+    left: 400px;
+}
+#blue,#blue_ {
+    top: 200px;
+    left: 200px;
+}
+.skills {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+}
+#red_skills1 {
+    top:72px;
+    left: 0px;
+}
+#blue_skills1 {
+    top:72px;
+    right: 0px;
+}
