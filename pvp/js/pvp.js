@@ -8,64 +8,14 @@ var red_collimation = "oneself";
 var blue_collimation = "oneself";
 addEventListener("keyup", function(event) {
     if(event.keyCode == 71 && red_X == blueX && red_Y == blueY) {//red攻击
-	if(red_collimation == "front"){
-            if(blueX <= red_X && blueY == red_Y){
-                blueHP-=3;
-                document.getElementById("blueHP").value = blueHP;
-                win();
-            }
-        }
-        if(red_collimation == "left"){
-            if(blueX == red_X && blueY <= red_Y){
-                    blueHP-=3;
-                    document.getElementById("blueHP").value = blueHP;
-                    win();
-            }
-        }
-        if(red_collimation == "back"){
-            if(blueX >= red_X && blueY == red_Y){
-                    blueHP-=3;
-                    document.getElementById("blueHP").value = blueHP;
-                    win();
-            }
-        }
-        if(red_collimation == "right"){
-            if(blueX == red_X && blueY >= red_Y){
-                    blueHP-=3;
-                    document.getElementById("blueHP").value = blueHP;
-                    win();
-            }
-        }
+        blueHP-=3;
+        document.getElementById("blueHP").value = blueHP;
+        win();//判断有没有击败
     }
     if(event.keyCode == 191 && blue_X == redX && blue_Y == redY) {//blue攻击
-        if(blue_collimation == "front"){
-            if(redX <= blue_X && redY == blue_Y){
-                redHP-=3;
-                document.getElementById("redHP").value = redHP;
-                win();
-            }
-        }
-        if(blue_collimation == "left"){
-            if(redX == blue_X && redY <= blue_Y){
-                    redHP-=3;
-                    document.getElementById("redHP").value = redHP;
-                    win();
-            }
-        }
-        if(blue_collimation == "back"){
-            if(redX >= blue_X && redY == blue_Y){
-                    redHP-=3;
-                    document.getElementById("redHP").value = redHP;
-                    win();
-            }
-        }
-        if(blue_collimation == "right"){
-            if(redX == blue_X && redY >= blue_Y){
-                    redHP-=3;
-                    document.getElementById("redHP").value = redHP;
-                    win();
-            }
-        }
+        redHP-=3;
+        document.getElementById("redHP").value = redHP;
+        win();//判断有没有击败
     }
 });
 function win(){

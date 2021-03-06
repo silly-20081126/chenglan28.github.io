@@ -8,7 +8,7 @@ addEventListener("keyup", function(event) {
         blue_skills1CD = 50;
         if(blue_collimation == "front"){
             if(redX <= blue_X && redY == blue_Y){
-                redHP-=10;
+                redHP-=5;
                 document.getElementById("redHP").value = redHP;
                 win();
             }
