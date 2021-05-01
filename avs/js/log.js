@@ -1,0 +1,1 @@
+function log(text,user){if(user != 1){document.getElementById("log").innerHTML += "<br/>" + text}}
