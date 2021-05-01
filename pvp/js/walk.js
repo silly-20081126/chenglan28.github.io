@@ -1,51 +1,43 @@
-var redX = 20;
-var redY = 20;
-var red_X = 20;
-var red_Y = 20;
-var blueX = 10;
-var blueY = 10;
-var blue_X = 10;
-var blue_Y = 10;
-addEventListener("keyup", function(event) {
-    if (event.keyCode == 87) {//red前进
-        redX--;
-        document.getElementById("red").style.top = redX * 20 + "px";
-        red_collimation = "front";
+addEventListener("keyup", function(e) {
+    if (e.keyCode == 87) {//red前进
+        info.red.X-=info.red.speed;
+        document.getElementById("red").style.top = info.red.X * 20 + "px";
+        info.red.collimation = "front";
     }
-    if (event.keyCode == 65) {//red向左走
-        redY--;
-        document.getElementById("red").style.left = redY * 20 + "px";
-        red_collimation = "left";
+    if (e.keyCode == 65) {//red向左走
+        info.red.Y-=info.red.speed;
+        document.getElementById("red").style.left = info.red.Y * 20 + "px";
+        info.red.collimation = "left";
     }
-    if (event.keyCode == 83) {//red向后走
-        redX++;
-        document.getElementById("red").style.top = redX * 20 + "px";
-        red_collimation = "back";
+    if (e.keyCode == 83) {//red向后走
+        info.red.X+=info.red.speed;
+        document.getElementById("red").style.top = info.red.X * 20 + "px";
+        info.red.collimation = "back";
     }
-    if (event.keyCode == 68) {//red向右走
-        redY++;
-        document.getElementById("red").style.left = redY * 20 + "px";
-        red_collimation = "right";
+    if (e.keyCode == 68) {//red向右走
+        info.red.Y+=info.red.speed;
+        document.getElementById("red").style.left = info.red.Y * 20 + "px";
+        info.red.collimation = "right";
     }
-    if (event.keyCode == 38) {//blue前进
-        blueX--;
-        document.getElementById("blue").style.top = blueX * 20 + "px";
-        blue_collimation = "front";
+    if (e.keyCode == 38) {//blue前进
+        info.blue.X-=info.blue.speed;
+        document.getElementById("blue").style.top = info.blue.X * 20 + "px";
+        info.blue.collimation = "front";
     }
-    if (event.keyCode == 37) {//blue向左走
-        blueY--;
-        document.getElementById("blue").style.left = blueY * 20 + "px";
-        blue_collimation = "left";
+    if (e.keyCode == 37) {//blue向左走
+        info.blue.Y-=info.blue.speed;
+        document.getElementById("blue").style.left = info.blue.Y * 20 + "px";
+        info.blue.collimation = "left";
     }
-    if (event.keyCode == 40) {//blue向后走
-        blueX++;
-        document.getElementById("blue").style.top = blueX * 20 + "px";
-        blue_collimation = "back";
+    if (e.keyCode == 40) {//blue向后走
+        info.blue.X+=info.blue.speed;
+        document.getElementById("blue").style.top = info.blue.X * 20 + "px";
+        info.blue.collimation = "back";
     }
-    if (event.keyCode == 39) {//blue向右走
-        blueY++;
-        document.getElementById("blue").style.left = blueY * 20 + "px";
-        blue_collimation = "right";
+    if (e.keyCode == 39) {//blue向右走
+        info.blue.Y+=info.blue.speed;
+        document.getElementById("blue").style.left = info.blue.Y * 20 + "px";
+        info.blue.collimation = "right";
     }  
     turn();
 });

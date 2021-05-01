@@ -1,36 +1,44 @@
-addEventListener("keyup", function(event) {
-    if (event.keyCode == 84 && red_skills1CD == 0) {//red释放1技能
-        red_skills1CD = 200;
-        redHP+=2;
-        document.getElementById("redHP").value = redHP;
+addEventListener("keyup", function(e) {
+    if (e.keyCode == 84 && info.red.skills[0].CD == 0) {//red释放1技能
+        info.red.skills[0].CD = info.red.skills[0]._CD;
+        info.red.HP+=info.red.skills[0].x;
+        document.getElementById("redHP").value = info.red.HP;
     }
-    if (event.keyCode == 222 && blue_skills1CD == 0) {//blue释放1技能
-        blue_skills1CD = 50;
-        if(blue_collimation == "front"){
-            if(redX <= blue_X && redY == blue_Y){
-                redHP-=5;
-                document.getElementById("redHP").value = redHP;
+    if (e.keyCode == 89 && info.red.skills[1].CD == 0) {//red释放2技能
+        info.red.skills[1].CD = info.red.skills[1]._CD;
+        info.blue.X = info.red._X;
+        info.blue.Y = info.red._Y;
+        document.getElementById("blue").style.top = info.blue.X * 20 + "px";
+        document.getElementById("blue").style.left = info.blue.Y * 20 + "px";
+        turn();
+    }
+    if (e.keyCode == 222 && info.blue.skills[0].CD == 0) {//blue释放1技能
+        info.blue.skills[0].CD = info.blue.skills[0]._CD;
+        if(info.blue.collimation == "front"){
+            if(info.red.X <= info.blue._X && info.red.Y == info.blue._Y){
+                info.red.HP-=info.blue.skills[0].x;
+                document.getElementById("redHP").value = info.red.HP;
                 win();
             }
         }
-        if(blue_collimation == "left"){
-            if(redX == blue_X && redY <= blue_Y){
-                    redHP-=5;
-                    document.getElementById("redHP").value = redHP;
+        if(info.blue.collimation == "left"){
+            if(info.red.X == info.blue._X && info.red.Y <= info.blue._Y){
+                    info.red.HP-=5;
+                    document.getElementById("redHP").value = info.red.HP;
                     win();
             }
         }
-        if(blue_collimation == "back"){
-            if(redX >= blue_X && redY == blue_Y){
-                    redHP-=5;
-                    document.getElementById("redHP").value = redHP;
+        if(info.blue.collimation == "back"){
+            if(info.red.X >= info.blue._X && info.red.Y == info.blue._Y){
+                    info.red.HP-=5;
+                    document.getElementById("redHP").value = info.red.HP;
                     win();
             }
         }
-        if(blue_collimation == "right"){
-            if(redX == blue_X && redY >= blue_Y){
-                    redHP-=5;
-                    document.getElementById("redHP").value = redHP;
+        if(info.blue.collimation == "right"){
+            if(info.red.X == info.blue._X && info.red.Y >= info.blue._Y){
+                    info.red.HP-=5;
+                    document.getElementById("redHP").value = info.red.HP;
                     win();
             }
         }
@@ -39,12 +47,16 @@ addEventListener("keyup", function(event) {
 setInterval(function(){//技能冷却
     document.getElementById("red_skills1").style.display = "block";
     document.getElementById("blue_skills1").style.display = "block";
-    if(red_skills1CD > 0){//red1技能
+    if(info.red.skills[0].CD > 0){//red1技能
         document.getElementById("red_skills1").style.display = "none";
-        red_skills1CD--;
+        info.red.skills[0].CD--;
     }
-    if(blue_skills1CD > 0){//blue1技能
+    if(info.red.skills[1].CD > 0){//red2技能
+        //document.getElementById("red_skills1").style.display = "none";
+        info.red.skills[1].CD--;
+    }
+    if(info.blue.skills[0].CD > 0){//blue1技能
         document.getElementById("blue_skills1").style.display = "none";
-        blue_skills1CD--;
+        info.blue.skills[0].CD--;
     }
 },100);
