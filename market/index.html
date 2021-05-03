@@ -1,0 +1,66 @@
+<script>
+    var info = {
+        "money":10000,
+        "value":5,
+        "item":[{"value":0,
+        "money":Math.floor(Math.random() * 100)},
+        {"value":0,
+        "money":Math.floor(Math.random() * 100)},
+        {"value":0,
+        "money":Math.floor(Math.random() * 100)},
+        {"value":0,
+        "money":Math.floor(Math.random() * 100)},
+        {"value":0,
+        "money":Math.floor(Math.random() * 100)}]
+    }
+    setInterval(function(){
+        var item = Math.floor(Math.random() * info.item.length);
+            info.item[item].money = Math.floor(Math.random() * 500);
+            document.getElementById("demo").innerHTML += "<p style='color:green'>item no." + item + " money update " + info.item[item].money + "</p>";
+            var new_item = Math.floor(Math.random() * 20);
+            if(new_item == 0){
+                info.item[info.value] = {"value":0,
+                "money":Math.floor(Math.random() * 100)};
+                document.getElementById("demo").innerHTML += "<p style='color:red'>new item no." + info.value + ",money " + info.item[info.value].money + "</p>";
+                info.value++;
+            }
+        },10000);
+    function buy(object,value){
+        if(info.money >= info.item[object].money * value){
+            info.item[object].value+=value;
+            info.item[object].value = info.item[object].value * 1;
+            info.money -= info.item[object].money * value;
+            document.getElementById("demo").innerHTML += "<p style='color:yellow'>buy" + value + " item no." + object + ",you money " + info.money + "</p>";
+        }
+        else document.getElementById("demo").innerHTML += "<p style='color:blue'>money defect</p>";
+    }
+    function sell(object,value){
+        if(info.item[object].value >= value){
+            info.item[object].value-=value;
+            info.money += info.item[object].money * value;
+            document.getElementById("demo").innerHTML += "<p style='color:blue'>sell" + value + " item no." + object + ",you money " + info.money + "</p>";
+        }
+        else document.getElementById("demo").innerHTML += "<p style='color:blue'>item defect</p>";
+    }
+    function list(object){
+        if(object == "money")document.getElementById("demo").innerHTML += "<p style='color:white'>you money " + info.money + "</p>";
+        else document.getElementById("demo").innerHTML += "<p style='color:white'>now item " + object + " money " + info.item[object].money + ",目前持有" + info.item[object].value + "个</p>";
+    }
+    //v1.0
+</script>
+<style>
+    body {
+        background-color: black;
+    }
+    #demo {
+        height: 500px;
+        overflow: scroll;
+    }
+</style>
+<title>item</title>
+<a style="color:cyan" onclick="buy(prompt('number'),prompt('value'))">buy</a>|
+<a style="color:cyan" onclick="sell(prompt('number'),prompt('value'))">sell</a>|
+<a style="color:cyan" onclick="list(prompt('number'))">list</a>|
+<a style="color:cyan" onclick="localStorage.info = JSON.stringify(info)">save</a>|
+<a style="color:cyan" onclick="info = JSON.parse(localStorage.info)">load</a>
+<div id="demo"></div>
