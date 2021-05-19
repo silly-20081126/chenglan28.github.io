@@ -18,7 +18,8 @@ var info = {
         "Y":20,
         "_X":20,
         "_Y":20,
-        "speed":1
+        "speed":1,
+        "hurt":3
     },
     "blue":{
         "HP":20,
@@ -28,6 +29,12 @@ var info = {
                 "CD":0,
                 "_CD":50,
                 "x":5
+            },
+            {
+                "CD":0,
+                "_CD":50,
+                "x":2,
+                "y":7
             }
         ],
         "collimation":"oneself",
@@ -35,17 +42,19 @@ var info = {
         "Y":10,
         "_X":10,
         "_Y":10,
-        "speed":1
-    }
+        "speed":1,
+        "hurt":3
+    },
+    "CD":100
 }
 addEventListener("keyup", function(event) {
     if(event.keyCode == 71 && info.red._X == info.blue.X && info.red._Y == info.blue.Y) {//red攻击
-        info.blue.HP-=3;
+        info.blue.HP-=info.red.hurt;
         document.getElementById("blueHP").value = info.blue.HP;
         win();//判断有没有击败
     }
     if(event.keyCode == 191 && info.blue._X == info.red.X && info.blue._Y == info.red.Y) {//blue攻击
-        info.red.HP-=3;
+        info.red.HP-=info.blue.hurt;
         document.getElementById("redHP").value = info.red.HP;
         win();//判断有没有击败
     }

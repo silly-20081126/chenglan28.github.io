@@ -2,9 +2,9 @@
     padding: 0;
     margin: 0;
 }
-body {
-    background-color: black;
-    color: white;
+#demo {
+    width: 1920px;
+    height: 1080px;
 }
 .block {
     width: 20px;
@@ -28,7 +28,15 @@ body {
     top:72px;
     left: 0px;
 }
+#red_skills2 {
+    top:104px;
+    left: 0px;
+}
 #blue_skills1 {
     top:72px;
+    right: 0px;
+}
+#blue_skills2 {
+    top:104px;
     right: 0px;
 }

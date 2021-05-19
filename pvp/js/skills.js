@@ -23,40 +23,89 @@ addEventListener("keyup", function(e) {
         }
         if(info.blue.collimation == "left"){
             if(info.red.X == info.blue._X && info.red.Y <= info.blue._Y){
-                    info.red.HP-=5;
+                    info.red.HP-=info.blue.skills[0].x;
                     document.getElementById("redHP").value = info.red.HP;
                     win();
             }
         }
         if(info.blue.collimation == "back"){
             if(info.red.X >= info.blue._X && info.red.Y == info.blue._Y){
-                    info.red.HP-=5;
+                    info.red.HP-=info.blue.skills[0].x;
                     document.getElementById("redHP").value = info.red.HP;
                     win();
             }
         }
         if(info.blue.collimation == "right"){
             if(info.red.X == info.blue._X && info.red.Y >= info.blue._Y){
-                    info.red.HP-=5;
+                    info.red.HP-=info.blue.skills[0].x;
                     document.getElementById("redHP").value = info.red.HP;
                     win();
+            }
+        }
+    }
+    if (e.keyCode == 186 && info.blue.skills[1].CD == 0) {//blue释放2技能
+        info.blue.skills[1].CD = info.blue.skills[1]._CD;
+        if(info.blue.collimation == "front"){
+            if(info.red.X <= info.blue._X && info.red.Y == info.blue._Y){
+                info.red.HP-=info.blue.skills[1].x;
+                document.getElementById("redHP").value = info.red.HP;
+                win();
+                info.red.X-=info.blue.skills[1].y;
+                document.getElementById("red").style.top = info.red.X * 20 + "px";
+                turn();
+            }
+        }
+        if(info.blue.collimation == "left"){
+            if(info.red.X == info.blue._X && info.red.Y <= info.blue._Y){
+                    info.red.HP-=info.blue.skills[1].x;
+                    document.getElementById("redHP").value = info.red.HP;
+                    win();
+                    info.red.Y-=info.blue.skills[1].y;
+                    document.getElementById("red").style.left = info.red.Y * 20 + "px";
+                    turn();
+            }
+        }
+        if(info.blue.collimation == "back"){
+            if(info.red.X >= info.blue._X && info.red.Y == info.blue._Y){
+                    info.red.HP-=info.blue.skills[1].x;
+                    document.getElementById("redHP").value = info.red.HP;
+                    win();
+                    info.red.X+=info.blue.skills[1].y;
+                    document.getElementById("red").style.top = info.red.X * 20 + "px";
+                    turn();
+            }
+        }
+        if(info.blue.collimation == "right"){
+            if(info.red.X == info.blue._X && info.red.Y >= info.blue._Y){
+                    info.red.HP-=info.blue.skills[1].x;
+                    document.getElementById("redHP").value = info.red.HP;
+                    win();
+                    info.red.Y+=info.blue.skills[1].y;
+                    document.getElementById("red").style.left = info.red.Y * 20 + "px";
+                    turn();
             }
         }
     }
 });
 setInterval(function(){//技能冷却
     document.getElementById("red_skills1").style.display = "block";
+    document.getElementById("red_skills2").style.display = "block";
     document.getElementById("blue_skills1").style.display = "block";
+    document.getElementById("blue_skills2").style.display = "block";
     if(info.red.skills[0].CD > 0){//red1技能
         document.getElementById("red_skills1").style.display = "none";
         info.red.skills[0].CD--;
     }
     if(info.red.skills[1].CD > 0){//red2技能
-        //document.getElementById("red_skills1").style.display = "none";
+        document.getElementById("red_skills2").style.display = "none";
         info.red.skills[1].CD--;
     }
     if(info.blue.skills[0].CD > 0){//blue1技能
         document.getElementById("blue_skills1").style.display = "none";
         info.blue.skills[0].CD--;
     }
-},100);
+    if(info.blue.skills[1].CD > 0){//blue2技能
+        document.getElementById("blue_skills2").style.display = "none";
+        info.blue.skills[1].CD--;
+    }
+},info.CD);
