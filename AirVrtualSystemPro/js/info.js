@@ -18,5 +18,6 @@ info = {
             "left":"330px"
         }
     },
-    "password":"admin"
+    "password":"admin",
+    "version":[1,1,3]
 }
