@@ -1,0 +1,1 @@
+if(localStorage.getInfo == "1")info = JSON.parse(localStorage.info)
