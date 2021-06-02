@@ -1,6 +1,7 @@
+api("addNew",[40,"F11打开全屏"])
 function o(x){return document.getElementById(x)}
 function check(){
-    if(o("password").value == info.password){
+    if(o("password").value == info.password || info.password == null){
         document.write("<div id='demo'></div>");//载入ui框架
         api("width",info.ui.width);//设置长度
         api("height",info.ui.height);//设置高度
@@ -20,7 +21,7 @@ function check(){
         api("iconsHeight",info.ui.icons.height);
         api("iconsTop",info.ui.icons.top);
         api("iconsLeft",info.ui.icons.left);
-        api("addIcon",["img/clock.png","clock()","clock"]);
+        api("addIcon",["img/clock.png","clock()","clockIcon"]);
     }
     else api("addNew",[20,"密码错误"]);
 }

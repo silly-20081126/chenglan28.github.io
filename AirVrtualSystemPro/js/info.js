@@ -18,6 +18,13 @@ info = {
             "left":"330px"
         }
     },
-    "password":"admin",
+    "clock":{
+        "top":"193px",
+        "left":"330px",
+        "backgroundColor":"white",
+        "opacity":"0.7",
+        "color":"blue"
+    },
+    "password":null,
     "version":[1,1,3]
 }
